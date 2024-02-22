@@ -17,6 +17,9 @@ export const MinusIcon = styled.i`
   left: 5px;
   top: 50%;
   transform: translateY(-50%);
+  &:hover{
+    cursor: pointer;
+  }
 `;
 
 export const PlusIcon = styled.i`
@@ -24,4 +27,7 @@ export const PlusIcon = styled.i`
   right: 5px;
   top: 50%;
   transform: translateY(-50%);
+  &:hover{
+    cursor: pointer;
+  }
 `;

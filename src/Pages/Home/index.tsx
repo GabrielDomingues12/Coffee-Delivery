@@ -4,7 +4,27 @@ import { Buy, Cards, CardsCoffe, HeaderProducts, Icons, Ilustration, ImageCoffes
 import Imagem from "../../assets/Imagem.png"
 import { Cart } from '../../Components/Cart'
 import { InputNumber } from '../../Components/InputNumber'
+import { useState } from 'react'
+
+interface Product {
+  id: string,
+  image: string,
+  name: string,
+  type: string[]
+}
 export const Home = () => {
+  const [addProduct, setAddProduct] = useState<Product[]>([])
+  console.log(addProduct)
+  const handleAddToCart = (product: Product) => {
+    const newProduct: Product = {
+      id: product.id,
+      image: product.image,
+      name: product.name,
+      type: product.type
+    }
+    setAddProduct(prevProducts => [...prevProducts, newProduct])
+  }
+
   return (
     <>
       <Intro>
@@ -13,7 +33,6 @@ export const Home = () => {
             <h1>Encontre o Café perfeito para qualquer hora do dia</h1>
           </Title>
           <Paragraph>Com o coffee Delivery você recebe seu café onde estiver, a qualquer hora</Paragraph>
-          {/* <Vector/> */}
           <Items>
             <Ilustration>
               <Icons color='yellowDark'>
@@ -67,6 +86,7 @@ export const Home = () => {
                 <Cart
                   color='#4B2995'
                   colorIcons='#FFF'
+                  functionNavigate={() => handleAddToCart(card)}
                 />
               </Buy>
             </Cards>

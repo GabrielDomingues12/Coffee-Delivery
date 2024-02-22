@@ -3,15 +3,18 @@ import { CartStyle } from "./style";
 
 interface CartProps {
   color?: string
-  colorIcons: string
+  colorIcons?: string
+  functionNavigate?: () => void
 }
-export const Cart = ({color, colorIcons}: CartProps) => {
+
+export const Cart = ({ color, colorIcons, functionNavigate }: CartProps) => {
   return (
-    <CartStyle 
+    <CartStyle
       color={color}
       colorIcons={colorIcons}
+      onClick={functionNavigate}
     >
-        <FaCartShopping size={22}/>
+      <FaCartShopping size={22} />
     </CartStyle>
   )
 }

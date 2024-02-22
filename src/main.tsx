@@ -5,7 +5,5 @@ import "./index.css"
 import "../src/Style/global.css"
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
     <App />
-  </React.StrictMode>,
 )
