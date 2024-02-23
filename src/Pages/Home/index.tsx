@@ -4,26 +4,24 @@ import { Buy, Cards, CardsCoffe, HeaderProducts, Icons, Ilustration, ImageCoffes
 import Imagem from "../../assets/Imagem.png"
 import { Cart } from '../../Components/Cart'
 import { InputNumber } from '../../Components/InputNumber'
-import { useState } from 'react'
-
-interface Product {
-  id: string,
-  image: string,
-  name: string,
-  type: string[]
-}
+import { useContext } from 'react'
+import { CoffeeContext } from '../../Context'
+import { CoffeeProductProps } from '../../Context'
+import { toast } from 'react-toastify'
 export const Home = () => {
-  const [addProduct, setAddProduct] = useState<Product[]>([])
-  console.log(addProduct)
-  const handleAddToCart = (product: Product) => {
-    const newProduct: Product = {
-      id: product.id,
-      image: product.image,
-      name: product.name,
-      type: product.type
+    const {setData, count} = useContext(CoffeeContext)
+    
+    const handleAddToCart = (product: CoffeeProductProps) => {
+      const newProduct: CoffeeProductProps = {
+        id: product.id,
+        image: product.image,
+        name: product.name,
+        type: product.type
+      }
+      
+      setData((prevProducts: CoffeeProductProps[]) => [...prevProducts, newProduct])
+      toast.success(`${newProduct.name} adicionado ao carrinho!`)
     }
-    setAddProduct(prevProducts => [...prevProducts, newProduct])
-  }
 
   return (
     <>
@@ -79,7 +77,7 @@ export const Home = () => {
                 ))}
               </Tags>
               <TitleCard>{card.name}</TitleCard>
-              <ParagraphCard>{card.description}</ParagraphCard>
+              <ParagraphCard>{card.description}</ParagraphCard> 
               <Buy>
                 <Price>R$ 9,90</Price>
                 <InputNumber />

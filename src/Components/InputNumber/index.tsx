@@ -1,16 +1,17 @@
 import { GoPlus } from "react-icons/go"
 import { InputContainer, MinusIcon, PlusIcon, StyledInput } from "./style"
 import { RiSubtractLine } from "react-icons/ri"
-import { useState } from "react"
+import { useContext } from "react"
+import { CoffeeContext } from "../../Context"
 
 export const InputNumber = () => {
-    const [count, setCount] = useState(0)
+    const {setCount, count} = useContext(CoffeeContext)
 
     function addProduct () {
-        setCount(prevCount => prevCount + 1)
+        setCount((prevCount: number) => prevCount + 1)
     }
     function removeProduct () {
-        setCount(prevCount => prevCount !== 0 ? prevCount - 1 : 0)
+        setCount((prevCount: number) => prevCount !== 0 ? prevCount - 1 : 0)
     }
     return (
         <InputContainer>
